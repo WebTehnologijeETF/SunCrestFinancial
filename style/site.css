@@ -1,0 +1,281 @@
+body {
+	width: 100%;
+	margin: 0;
+}
+
+#header {
+	width: 80%;
+	margin: auto;
+	
+	-moz-box-shadow: 6px 7px 20px #000000;
+	-webkit-box-shadow: 6px 7px 20px #000000;
+	box-shadow: 6px 7px 20px #000000;
+}
+
+#banner {
+	width: 100%;
+	height: 120px;
+
+	
+	background: -moz-linear-gradient(left, #87e0fd 4%, #05abe0 18%, #05abe0 18%, #05abe0 45%, #53cbf1 92%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(4%,#87e0fd), color-stop(18%,#05abe0), color-stop(18%,#05abe0), color-stop(45%,#05abe0), color-stop(92%,#53cbf1)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, #87e0fd 4%,#05abe0 18%,#05abe0 18%,#05abe0 45%,#53cbf1 92%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, #87e0fd 4%,#05abe0 18%,#05abe0 18%,#05abe0 45%,#53cbf1 92%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, #87e0fd 4%,#05abe0 18%,#05abe0 18%,#05abe0 45%,#53cbf1 92%);
+}
+
+#company
+{
+	float: right;
+	margin-top: 1%;
+	padding-right: 16%;
+	font-weight: bold;
+	font-size: 400%;
+	font-family: 'Bitter', serif;
+}
+
+#logo {
+	width: 15%;
+	height: 100%;
+}
+
+.logo_pic {
+	width: 100%;
+	height: 100%;
+}
+
+#navigation  {
+	background-color: #B8EDFE;
+	width: 100%;
+	height: 30px;
+}
+
+nav {
+	margin-left: 5%;
+	height: 100%;
+}
+
+nav a {
+	color: black;
+	font-weight: bold;
+	font-size: 20px;
+	font-family: 'Bitter', serif;
+	padding: 0 1% 0.3% 1%;
+}
+
+nav a:link {
+    text-decoration: none;
+}
+
+nav a:visited {
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: none;
+	background-color: #36C2F0;
+}
+
+nav a:active {
+    text-decoration: none;
+}
+
+
+#main {
+	width: 80%;
+	margin: auto;
+	height: auto;
+	min-height: 400px;
+	background-color: #B8EDFE;
+	margin-top: 3%;
+	
+	-moz-box-shadow: 6px 7px 20px #000000;
+	-webkit-box-shadow: 6px 7px 20px #000000;
+	box-shadow: 6px 7px 20px #000000;
+}
+
+.sidebar {
+	width: 20%;
+	padding-top: 1%;
+	padding-left: 1%;
+	height: auto;
+}
+
+#sidebar1 {
+	float: left;
+}
+
+#sidebar1 img {
+	clear: both;
+	width: 95%;
+	margin-top: 5%;
+	max-height: 495px;
+}
+
+#content {
+	width: 80%;
+	height: auto;
+	margin-left: 20%;
+	padding-top: 1%;
+	padding-bottom: 3%;
+}
+
+.news {
+	padding: 1% 4% 1% 1%;
+	font-family: 'Bitter', serif;
+}
+
+.news .title {
+	font-weight: bold;
+	font-size: 24px;
+	padding-bottom: 1%;
+}
+
+.news .author {
+	float: left;
+	font-style: italic;
+}
+
+.news .date {
+	float: right;
+	font-style: italic;
+}
+
+.news .content {
+	padding-top: 5%;
+}
+
+#footer {
+	clear: both;
+	width: 80%;
+	margin: auto;
+	padding-top: 5%;
+	padding-bottom: 1%;
+}
+
+#footer span {
+	font-style: italic;
+	font-family: 'Bitter', serif;
+	padding-left: 12%;
+}
+
+.page_title {
+	font-family: 'Bitter', serif;
+	font-weight: bold;
+	font-size: 24px;
+	padding-bottom: 1%;
+	border-bottom: 1px solid gray;
+	width: 90%;
+}
+
+.exrate {
+	margin-top: 5%;
+	margin-left: 5%;
+	font-family: 'Bitter', serif;
+	font-size: 80%;
+}
+
+.exrate table {
+	width: 85%;
+}
+
+.exrate table tr th {
+	padding: 1%;
+}
+
+.exrate table td, th {
+	text-align: center;
+}
+
+.contact {
+	padding: 5% 0 5% 1%;
+	font-family: 'Bitter', serif;
+}
+
+.contact .input {
+	padding-top: 2%;
+}
+
+.contact .submit {
+	padding-top: 5%;
+}
+
+.contact .submit  input{
+	width: 10%;
+	height: 5%;
+	border: 0;
+	background-color: #36C2F0;
+	font-family: 'Bitter', serif;
+	padding: 4px;
+}
+
+.contact .input label{
+	float: left;
+}
+
+.contact .input .field {
+	margin-left: 25%;
+}
+
+.contact .input .field input, select, textarea {
+	width: 25.2%;
+}
+
+.exrate table, td, th {
+	border: 1px solid gray;
+	border-collapse: collapse;
+}
+.exrate table tr td{
+	padding: 10px;
+}
+
+.exrate table tr:nth-child(1) {
+	background-color: #36C2F0;
+}
+
+.exrate table tr:nth-child(even) {
+	background-color: #5ED3FA;
+}
+
+#partners {
+	padding: 5% 0 5% 0;
+}
+
+#partners ul {
+	list-style-image: url('../content/partner.png');
+}
+
+#partners ul  li{
+	list-style-image: url('../content/partner.png');
+	margin-left: 15%;
+	font-family: 'Bitter', serif;
+	font-weight: bold;
+	font-size: 120%;
+	padding-bottom: 2%;
+}
+
+#partners  a {
+    color: black;
+	position: absolute;
+	margin: 1.75% 0 0 2.25%;
+}
+
+#partners  a:link {
+    text-decoration: none;
+}
+
+#partners  a:visited {
+    text-decoration: none;
+}
+
+#partners  a:hover {
+    text-decoration: underline;
+}
+
+#partners  a:active {
+    text-decoration: none;
+}
+
+
+
+
