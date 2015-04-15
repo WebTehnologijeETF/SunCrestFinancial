@@ -38,38 +38,38 @@
 				<div class="input">
 					<label>Ime:</label>
 					<div class="field">
-						<input type="text" name="firstname"/>
+						<input type="text" class="required" id="firstname" name="firstname" onblur="validateRequired(this)" />
 					</div>
 				</div>
 				<div class="input">
 					<label>Prezime:</label>
 					<div class="field">
-						<input type="text" name="lastname"/>
+						<input type="text" class="required" id="lastname" name="lastname" onblur="validateRequired(this)" />
 					</div>
 				</div>
 				<div class="input">
 					<label>Email:</label>
 					<div class="field">
-						<input type="email" name="email"/>
+						<input type="email" class="required" id="email" name="email" onblur="validateEmail(this)" />
 					</div>
 				</div>
 				<div class="input">
 					<label>Adresa:</label>
 					<div class="field">
-						<input type="text" name="adress"/>
+						<input type="text" id="address" name="adress"/>
 					</div>
 				</div>				
 				<div class="input">
 					<label>Komentar:</label>
 					<div class="field">
-						<textarea rows="4" name="comment">
+						<textarea rows="4" class="required" id="comment" name="comment" onblur="validateRequired(this)" >
 						</textarea>
 					</div>
 				</div>			
 				<div class="input">
 					<label>Tip komentara: </label>
 					<div class="field">
-						<select name="commenttype">
+						<select name="commentType" id="commentType">
 							<option>Pritužba</option>
 							<option>Prijedlog</option>
 							<option>Pohvala</option>
@@ -81,7 +81,7 @@
 				</div>
 				
 				<div class="submit">
-					<input type="submit" name="submit" value="Podnesi" />
+					<input type="submit" id="submit" name="submit" value="Podnesi" />
 				</div>
 
 			</form>

@@ -276,6 +276,9 @@ nav a:active {
     text-decoration: none;
 }
 
+.invalid {
+	background-color: ##FF7575;
+}
 
 
 
