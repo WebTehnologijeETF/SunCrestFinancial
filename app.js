@@ -1,30 +1,55 @@
-function validateEmail(element) {
-	var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-    var valid = re.test(email.value);
-	if (valid) {
-		element.className = "required";
-	}
-	else {
-		element.className = "required invalid";
-	}
+var xmlHttp;
+if (window.XMLHttpRequest) {
+	// code for IE7+, Firefox, Chrome, Opera, Safari
+	xmlHttp = new XMLHttpRequest();
+  }
+else {
+	// code for IE6, IE5
+  xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+
+
+function loadHome() { 
+	xmlHttp.onreadystatechange = function() {
+		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+			document.getElementById("main").innerHTML = xmlHttp.responseText;
+		}
+    }
 	
-	validateButton();
+	xmlHttp.open("GET","pages/home.html",true);
+	xmlHttp.send();
 }
 
-function validateRequired(element) {
-	if (element.value == "") {
-		element.className = "required invalid";
-	}
-	else {
-		element.className = "required";
-	}
+function loadExRate() {
+	xmlHttp.onreadystatechange = function() {
+		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+			document.getElementById("main").innerHTML = xmlHttp.responseText;
+		}
+    }
 	
-	validateButton();
+	xmlHttp.open("GET","pages/exrate.html",true);
+	xmlHttp.send();
 }
 
-function validateButton() {
-	if (document.getElementsByClassName("invalid").length > 0)
-		document.getElementById("submit").disabled = true;
-	else
-		document.getElementById("submit").disabled = false;
+function loadPartners() {
+	xmlHttp.onreadystatechange = function() {
+		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+			document.getElementById("main").innerHTML = xmlHttp.responseText;
+		}
+    }
+	
+	xmlHttp.open("GET","pages/partners.html",true);
+	xmlHttp.send();
+}
+
+function loadContact() {
+	xmlHttp.onreadystatechange = function() {
+		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+			document.getElementById("main").innerHTML = xmlHttp.responseText;
+		}
+    }
+	
+	xmlHttp.open("GET","pages/contact.html",true);
+	xmlHttp.send();
 }
