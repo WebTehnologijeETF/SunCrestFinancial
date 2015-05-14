@@ -8,7 +8,17 @@ else {
   xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
 }
 
-
+function openNews() { 
+	xmlHttp.onreadystatechange = function() {
+		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+			document.getElementById("main").innerHTML = xmlHttp.responseText;
+			document.title = "SunCrest Financial Inc.";
+		}
+    }
+	
+	xmlHttp.open("GET","pages/newsItem.php",true);
+	xmlHttp.send();
+}
 
 function loadHome() { 
 	xmlHttp.onreadystatechange = function() {
@@ -18,7 +28,7 @@ function loadHome() {
 		}
     }
 	
-	xmlHttp.open("GET","pages/home.html",true);
+	xmlHttp.open("GET","pages/home.php",true);
 	xmlHttp.send();
 }
 
