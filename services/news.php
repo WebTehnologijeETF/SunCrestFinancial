@@ -114,7 +114,7 @@ function generateNewsItemHtml($id) {
 		$result.= $comment->getContent();
 		$result.= "</span>";
 		$result.= "<span class=\"info\">";
-		$result.= "Autor: <a href=\"#\">";
+		$result.= "Autor: <a href=\"mailto:".$comment->getEmail()."\">";
 		$result.= $comment->getAuthor();
 		$result.= "</a> | ";
 		$result.= $comment->getDateCreated();
