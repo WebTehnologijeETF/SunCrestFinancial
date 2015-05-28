@@ -1,14 +1,7 @@
 <?php
 
-require_once("commentItemClass.php");
- 
-class NewsItem
+class CommentItem
 {
-	
-  function __construct() 
-  {
-	$this->comments = array();
-  }
   // date
   private $id = "";
   
@@ -49,17 +42,17 @@ class NewsItem
   }
   
   
-  // title
-  private $title = "";
+  // email
+  private $email = "";
   
-  public function getTitle()
+  public function getEmail()
   {
-      return $this->title;
+      return $this->email;
   }
   
-  public function setTitle($newval)
+  public function setEmail($newval)
   {
-      $this->title = $newval;
+      $this->email = $newval;
   }
   
   // content
@@ -74,30 +67,5 @@ class NewsItem
   {
       $this->content = $newval;
   }
-  
-  // detailedContent
-  private $detailedContent = "";
-  
-  public function getDetailedContent()
-  {
-      return $this->detailedContent;
-  }
-  
-  public function setDetailedContent($newval)
-  {
-      $this->detailedContent = $newval;
-  }
-  
-  // comment
-  private $comments;
-  
-  public function getComments()
-  {
-      return $this->comments;
-  }
-  
-  public function setComments($newval)
-  {
-      $this->comments = $newval;
-  }	
+
 }

@@ -2,7 +2,7 @@
 
 require("../services/news.php");
 
-$content = generateNewsHtml(getNews());
+$content = generateNewsHtml(getNewsFromDatabase());
 
 echo <<< _HTML
 

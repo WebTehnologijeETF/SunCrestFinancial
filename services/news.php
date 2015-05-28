@@ -1,9 +1,8 @@
 <?php
 
+require_once('dataAccess.php');
 
-require("newsItemClass.php");
-
-function getNews() {
+function getNewsFromFiles() {
 $news = array();
 
 $directory = "../news/";
@@ -53,6 +52,10 @@ closedir($dir);
 return $news;
 }
 
+function getNewsFromDatabase() {
+	return fetchNewsWithComments();
+}
+
 function generateNewsHtml($news) {
 	
 	$result = "";
@@ -71,9 +74,10 @@ function generateNewsHtml($news) {
 	$result.= "<div class=\"content\">";
 	$result.= $newsItem->getContent();
 	
-	if ($newsItem->getHasDetails())
-		$result.= "<a href=\"#\" onclick=\"openNews(".$newsItem->getId().")\"> Detaljnije </a>";
 	
+	$result.= "<a href=\"#\" onclick=\"openNews(".$newsItem->getId().")\"> Detaljnije </a>";
+	$result.= "</br></br>";
+	$result.= "<a href=\"#\" onclick=\"openNews(".$newsItem->getId().")\"> Komentari(".count($newsItem->getComments()).") </a>";
 	$result.= "</div>";
 	$result.= "</div>";
 	
@@ -82,16 +86,12 @@ function generateNewsHtml($news) {
 	return $result;
 }
 
-function generateNewsItemHtml($news, $id) {
+function generateNewsItemHtml($id) {
 	
 	$result = "";
-	$item = null;
+	$item = fetchNewsItemWithComments($id);
 	
-	foreach($news as $newsItem) {
-		if ($newsItem->getId() == $id) {
-			$item = $newsItem;
-			}
-	}
+
 
 	$result.= "<div class=\"news\">";
 	$result.= "<div class=\"title\">";
@@ -108,6 +108,22 @@ function generateNewsItemHtml($news, $id) {
 	$result.= "</div>";
 	$result.= "</div>";
 	
+	foreach($item->getComments() as $comment) {
+		$result.= "<div class=\"comment\">";
+		$result.= "<span class=\"text\">";
+		$result.= $comment->getContent();
+		$result.= "</span>";
+		$result.= "<span class=\"info\">";
+		$result.= "Autor: <a href=\"#\">";
+		$result.= $comment->getAuthor();
+		$result.= "</a> | ";
+		$result.= $comment->getDateCreated();
+		$result.= "</span>";
+		$result.= "</div>";
+	}
+
 	return $result;
 
 }
+
+

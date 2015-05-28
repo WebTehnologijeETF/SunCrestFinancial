@@ -8,7 +8,7 @@ else {
   xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
 }
 
-function openNews() { 
+function openNews(id) { 
 	xmlHttp.onreadystatechange = function() {
 		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
 			document.getElementById("main").innerHTML = xmlHttp.responseText;
@@ -16,7 +16,7 @@ function openNews() {
 		}
     }
 	
-	xmlHttp.open("GET","pages/newsItem.php",true);
+	xmlHttp.open("GET","pages/newsItem.php?id=" + id, true);
 	xmlHttp.send();
 }
 
@@ -106,4 +106,23 @@ function updateRates(rates) {
 			tableRows[i].children[5].innerHTML = rates.query.results.rate[i-1].Rate;
 			tableRows[i].children[6].innerHTML = rates.query.results.rate[i-1].Ask;		
 		}
+}
+
+function comment(id) {
+
+	var comment = document.getElementById("comment").value;
+	var author = document.getElementById("firstname").value;
+	var email = document.getElementById("email").value;
+	
+	
+	xmlHttp.onreadystatechange = function() {
+		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+			openNews(id);
+		}
+    }
+	
+
+	xmlHttp.open("POST","services/insertComment.php", true);
+	xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	xmlHttp.send("id="+id+"&comment="+comment+"&firstname="+author+"&email="+email);
 }

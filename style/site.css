@@ -204,7 +204,7 @@ nav a:active {
 	width: 10%;
 	height: 5%;
 	border: 0;
-	background-color: #36C2F0;
+	background-color: #1690DA;
 	font-family: 'Bitter', serif;
 	padding: 4px;
 }
@@ -278,6 +278,20 @@ nav a:active {
 
 .invalid {
 	background-color: #FF7575;
+}
+
+.comment {
+	background-color: #36C2F0;
+	border-top: 1px dotted black;
+	min-height: 60px;
+	padding: 1%;
+}
+
+.comment .info{
+	  float: right;
+	  margin-top: 40px;
+	  margin-right: 40px;
+	  font-style: italic;
 }
 
 
