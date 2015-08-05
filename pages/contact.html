@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/style/site.css">
+	<link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<meta charset="utf-8">
+	<title>Kontakt forma</title>
+</head>
+
+<body>
+	<div id="header">
+		<div id="banner">
+			<div id="company"> SunCrest Financial </div>
+			<div id="logo">
+				<img src="/content/logo.png" alt="SunCrest Financial Logo" class="logo_pic"/>
+			</div>
+		</div>
+		<div id="navigation">
+			<nav>
+				<a href="/index.html">Home</a>
+				<a href="/pages/exrate.html">Kursna lista</a>
+				<a href="/pages/partners.html">Partneri</a>
+				<a href="/pages/contact.html">Kontakt</a>					
+			</nav>
+		</div>
+	</div>
+	
+	<div id="main">
+		<div id="sidebar1" class="sidebar">
+			<img src="../content/boa_logo.jpg" alt="ad" class="logo_pic"/>
+		</div>
+		
+		<div id="content">
+		
+			<div class="page_title">Kontakt forma</div>
+			
+			<form action="./contact.php" method="POST" class="contact">
+				<div class="input">
+					<label>Ime:</label>
+					<div class="field">
+						<input type="text" name="firstname"/>
+					</div>
+				</div>
+				<div class="input">
+					<label>Prezime:</label>
+					<div class="field">
+						<input type="text" name="lastname"/>
+					</div>
+				</div>
+				<div class="input">
+					<label>Email:</label>
+					<div class="field">
+						<input type="email" name="email"/>
+					</div>
+				</div>
+				<div class="input">
+					<label>Adresa:</label>
+					<div class="field">
+						<input type="text" name="adress"/>
+					</div>
+				</div>				
+				<div class="input">
+					<label>Komentar:</label>
+					<div class="field">
+						<textarea rows="4" name="comment">
+						</textarea>
+					</div>
+				</div>			
+				<div class="input">
+					<label>Tip komentara: </label>
+					<div class="field">
+						<select name="commenttype">
+							<option>Pritužba</option>
+							<option>Prijedlog</option>
+							<option>Pohvala</option>
+							<option>Upit</option>
+							<option>Molba</option>
+							<option>Podrška</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="submit">
+					<input type="submit" name="submit" value="Podnesi" />
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+	
+	<div id="footer">
+		<span>Copyright Adnan Ahmethodžić 2015. Sva prava zadržana. Zabranjeno preuzimanje sadržaja bez dozvole izdavača.</span>
+	</div>
+</body>
+
+</html>
