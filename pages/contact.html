@@ -1,0 +1,68 @@
+<div id="content">
+
+	<div class="page_title centered">Kontakt forma</div>
+		<form action="./contact.php" method="POST" class="contact">
+			<div>
+				<div class="input">
+					<div class="field">
+						<input type="text" name="firstname" placeholder="Ime" class="required" onblur="validateRequired(this)"/>
+					</div>
+					<span class="error-message hide">*Molim vas unesite vrijednost</span>
+				</div>
+				<div class="input">
+					<div class="field">
+						<input type="text" name="lastname" placeholder="Prezime" class="required" onblur="validateRequired(this)"/>
+					</div>   
+					<span class="error-message hide">*Molim vas unesite vrijednost</span>
+				</div>
+				<div class="input">
+					<div class="field">
+						<input type="email" name="email" placeholder="Email" class="required" onblur="validateEmail(this)"/>
+					</div>
+					<span class="error-message hide">*Email nije validan</span>
+				</div>
+				<div class="input">
+					<div class="field">
+						<input type="text" name="adress" placeholder="Adresa"/>
+					</div>
+				</div>	
+				<div class="input">
+					<div class="field">
+						<input type="text" name="city" id="city" placeholder="Grad" onblur="validateOnline(this)"/>
+					</div>
+					<span class="error-message-online hide"></span>
+				</div>	
+				<div class="input">
+					<div class="field">
+						<input type="text" name="zip" id="zip" placeholder="Zip" onblur="validateOnline(this)"/>
+					</div>
+					<span class="error-message-online hide"></span>
+				</div>							
+				<div class="input">
+					<div class="field">
+						<select name="commenttype" class="custom-select">
+						<option value="0">Tip komentara</option>
+							<option>Pritužba</option>
+							<option>Prijedlog</option>
+							<option>Pohvala</option>
+							<option>Upit</option>
+							<option>Molba</option>
+							<option>Podrška</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="input comment">
+				<div class="field">
+					<textarea rows="4" name="comment" placeholder="Komentar..." class="required" onblur="validateRequired(this)"></textarea>
+				</div>
+				<span class="error-message hide">*Molim vas unesite vrijednost</span>
+			</div>
+			<div class="submit">
+				<input type="submit" name="submit" id="submit" value="Podnesi" class="button-disabled" />
+			</div>
+
+		</form>
+
+</div>
+	
