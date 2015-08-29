@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/style/site.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<meta charset="utf-8">
+	<script src="/validation.js"></script>
+	<title>Kontakt forma</title>
+</head>
+
+<body>
+	<div id="header">
+		<div class="top-line"></div>
+		<div id="banner">
+			<div id="logo">
+				<img src="/content/logosc.png" alt="SunCrest Financial Logo" class="logo_pic"/>
+			</div>
+			<div id="navigation">
+				<nav>
+					<a href="/index.html">Home</a>
+					<a href="/pages/about.html">O SunCrest</a>
+					<a href="/pages/exrate.html">Kursna lista</a>
+					<a href="/pages/partners.html">Partneri</a>
+					<a href="/pages/contact.html">Kontakt</a>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+	<div id="main">
+		<div id="content">
+		
+			<div class="page_title centered">Kontakt forma</div>
+				<form action="./contact.php" method="POST" class="contact">
+					<div>
+						<div class="input">
+							<div class="field">
+								<input type="text" name="firstname" placeholder="Ime" class="required" onblur="validateRequired(this)"/>
+							</div>
+							<span class="error-message hide">*Molim vas unesite vrijednost</span>
+						</div>
+						<div class="input">
+							<div class="field">
+								<input type="text" name="lastname" placeholder="Prezime" class="required" onblur="validateRequired(this)"/>
+							</div>   
+							<span class="error-message hide">*Molim vas unesite vrijednost</span>
+						</div>
+						<div class="input">
+							<div class="field">
+								<input type="email" name="email" placeholder="Email" class="required" onblur="validateEmail(this)"/>
+							</div>
+							<span class="error-message hide">*Molim vas unesite vrijednost</span>
+						</div>
+						<div class="input">
+							<div class="field">
+								<input type="text" name="adress" placeholder="Adresa"/>
+							</div>
+						</div>							
+						<div class="input">
+							<div class="field">
+								<select name="commenttype" class="custom-select">
+								<option value="0">Tip komentara</option>
+									<option>Pritužba</option>
+									<option>Prijedlog</option>
+									<option>Pohvala</option>
+									<option>Upit</option>
+									<option>Molba</option>
+									<option>Podrška</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="input comment">
+						<div class="field">
+							<textarea rows="4" name="comment" placeholder="Komentar..." class="required" onblur="validateRequired(this)"></textarea>
+						</div>
+						<span class="error-message hide">*Molim vas unesite vrijednost</span>
+					</div>
+					<div class="submit">
+						<input type="submit" name="submit" id="submit" value="Podnesi" class="button-disabled" />
+					</div>
+
+				</form>
+
+		</div>
+	</div>
+	
+	<div id="footer">
+		<span>© Copyright  Adnan Ahmethodžić 2015</span>
+		<span>Sva prava zadržana. Zabranjeno preuzimanje sadržaja bez dozvole izdavača.</span>
+	</div>
+</body>
+
+</html>
