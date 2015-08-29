@@ -122,6 +122,13 @@ nav a:active {
     text-align: justify;
 }
 
+#content .news-image {
+    width: 400px;
+    float: left;
+    padding: 5px 15px 15px 0;
+}
+
+
 .news {
 	padding-bottom: 40px;
 }
