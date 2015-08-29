@@ -3,9 +3,11 @@ function validateEmail(element) {
     var valid = re.test(element.value);
 	if (valid) {
 		element.className = "required";
+		element.parentElement.parentElement.getElementsByClassName("error-message")[0].className = "error-message hide";
 	}
 	else {
 		element.className = "required invalid";
+		element.parentElement.parentElement.getElementsByClassName("error-message")[0].className = "error-message";
 	}
 	
 	validateButton();
@@ -14,9 +16,11 @@ function validateEmail(element) {
 function validateRequired(element) {
 	if (element.value == "") {
 		element.className = "required invalid";
+		element.parentElement.parentElement.getElementsByClassName("error-message")[0].className = "error-message";
 	}
 	else {
 		element.className = "required";
+		element.parentElement.parentElement.getElementsByClassName("error-message")[0].className = "error-message hide";
 	}
 	
 	validateButton();
