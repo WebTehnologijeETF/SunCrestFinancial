@@ -16,7 +16,7 @@ function openNews(id) {
 		}
     }
 	
-	xmlHttp.open("GET","pages/newsItem.php?id=" + id, true);
+	xmlHttp.open("GET","pages/newsItem.php?id=" + id,true);
 	xmlHttp.send();
 }
 
@@ -30,6 +30,21 @@ function loadHome() {
 	
 	xmlHttp.open("GET","pages/home.php",true);
 	xmlHttp.send();
+}
+
+function loadAbout() {
+	xmlHttp.onreadystatechange = function() {
+		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+			document.getElementById("main").innerHTML = xmlHttp.responseText;
+			document.title = "O nama";
+		}
+    }
+	
+	xmlHttp.open("GET","pages/about.html",true);
+	xmlHttp.send();
+	
+	// defer excetution a little till dom is ready
+	setTimeout(function(){ attachEventListeners(); }, 500);
 }
 
 function loadExRate() {
@@ -108,21 +123,38 @@ function updateRates(rates) {
 		}
 }
 
-function comment(id) {
-
-	var comment = document.getElementById("comment").value;
-	var author = document.getElementById("firstname").value;
+function sendEmail() {
+	var fname = document.getElementById("firstname").value;
+	var lname = document.getElementById("lastname").value;
 	var email = document.getElementById("email").value;
+	var adress = document.getElementById("adress").value;
+	var city = document.getElementById("city").value;
+	var zip = document.getElementById("zip").value;
+	var commentType = document.getElementById("commenttype").selectedOptions[0].innerText;
+	var comment = document.getElementById("comment").value;
 	
+	var data = 
+	{
+		fname : fname,
+		lname : lname,
+		email : email,
+		adress : adress,
+		city : city,
+		zip : zip,
+		commentType : commentType,
+		comment : comment
+	};
+	
+	var payload = JSON.stringify(data);
 	
 	xmlHttp.onreadystatechange = function() {
 		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-			openNews(id);
+			
 		}
     }
 	
-
-	xmlHttp.open("POST","services/insertComment.php", true);
-	xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-	xmlHttp.send("id="+id+"&comment="+comment+"&firstname="+author+"&email="+email);
+	xmlHttp.open("POST",".././mail/mail.php",true);
+	xmlHttp.setRequestHeader("Content-type","application/json");
+	xmlHttp.send(payload);
+	
 }

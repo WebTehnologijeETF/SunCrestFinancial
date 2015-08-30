@@ -1,6 +1,6 @@
 <?php
 
-require_once('dataAccess.php');
+require("newsItemClass.php");
 
 function getNewsFromFiles() {
 $news = array();
@@ -27,6 +27,9 @@ while (($file = readdir($dir)) !== false) {
 	   if ($index == 2) {
 			$current->setTitle($line);
 	   }
+	   if ($index == 3) {
+			$current->setImage($line);
+	   }
 	   
 	   if (trim($line) == "--") {
 			$current->setHasDetails(true);
@@ -52,9 +55,7 @@ closedir($dir);
 return $news;
 }
 
-function getNewsFromDatabase() {
-	return fetchNewsWithComments();
-}
+
 
 function generateNewsHtml($news) {
 	
@@ -72,6 +73,7 @@ function generateNewsHtml($news) {
 	$result.= $newsItem->getDateCreated();
 	$result.= "</div>";
 	$result.= "<div class=\"content\">";
+	$result.= "<img src=\"".$newsItem->getImage()."\" alt=\"image\" class=\"news-image\">";
 	$result.= $newsItem->getContent();
 	
 	
@@ -86,12 +88,15 @@ function generateNewsHtml($news) {
 	return $result;
 }
 
-function generateNewsItemHtml($id) {
-	
+function generateNewsItemHtml($news, $id) {
+	$item = null;
 	$result = "";
-	$item = fetchNewsItemWithComments($id);
-	
 
+	foreach($news as $newsItem) {
+		if ($newsItem->getId() == $id) {
+			$item = $newsItem;
+			}
+	}
 
 	$result.= "<div class=\"news\">";
 	$result.= "<div class=\"title\">";
@@ -104,6 +109,7 @@ function generateNewsItemHtml($id) {
 	$result.= $item->getDateCreated();
 	$result.= "</div>";
 	$result.= "<div class=\"content\">";
+	$result.= "<img src=\"".$newsItem->getImage()."\" alt=\"image\" class=\"news-image\">";
 	$result.= $item->getDetailedContent();
 	$result.= "</div>";
 	$result.= "</div>";

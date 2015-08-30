@@ -35,6 +35,18 @@ class NewsItem
       $this->dateCreated = $newval;
   }
   
+  // image
+  private $image = "";
+  
+  public function getImage()
+  {
+      return $this->image;
+  }
+  
+  public function setImage($newval)
+  {
+      $this->image = $newval;
+  }
   // author
   private $author = "";
   
@@ -88,6 +100,19 @@ class NewsItem
       $this->detailedContent = $newval;
   }
   
+  // detailedContent
+  private $hasDetails = "";
+  
+  public function getHasDetails()
+  {
+      return $this->hasDetails;
+  }
+  
+  public function setHasDetails($newval)
+  {
+      $this->hasDetails = $newval;
+  }
+  
   // comment
   private $comments;
   
@@ -99,5 +124,5 @@ class NewsItem
   public function setComments($newval)
   {
       $this->comments = $newval;
-  }	
+  }
 }
