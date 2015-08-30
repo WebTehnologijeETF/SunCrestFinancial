@@ -244,3 +244,42 @@ function addComment(id, el) {
 	xmlHttp.setRequestHeader("Content-type","application/json");
 	xmlHttp.send(payload);
 }
+
+function loadLogin() {
+	xmlHttp.onreadystatechange = function() {
+		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+			document.getElementById("main").innerHTML = xmlHttp.responseText;
+			document.title = "Login";
+		}
+    }
+	
+	xmlHttp.open("GET","pages/login.html",true);
+	xmlHttp.send();
+    
+	// defer excetution a little till dom is ready
+	setTimeout(function(){ attachEventListeners(); }, 500);
+}
+
+function loadAdminUsers() {
+	xmlHttp.onreadystatechange = function() {
+		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+			document.getElementById("main").innerHTML = xmlHttp.responseText;
+			document.title = "Admin korisnici";
+		}
+    }
+	
+	xmlHttp.open("GET","admin.user.html",true);
+	xmlHttp.send();
+}
+
+function loadAdminNews() {
+	xmlHttp.onreadystatechange = function() {
+		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+			document.getElementById("main").innerHTML = xmlHttp.responseText;
+			document.title = "Admin news";
+		}
+    }
+	
+	xmlHttp.open("GET","admin.news.html",true);
+	xmlHttp.send();
+}

@@ -1,0 +1,21 @@
+<div id="content" class="login-page">
+	<div class="page_title centered">Prijava na Admin panel</div>
+	<form action="" class="contact">
+		<div class="input">
+			<div class="field">
+				<input type="text" name="username" placeholder="Username" class="required" onblur="validateRequired(this)"/>
+			</div>
+			<span class="error-message hide">*Molim vas unesite vrijednost</span>
+		</div>
+		<div class="input">
+			<div class="field">
+				<input type="text" name="password" placeholder="Password" class="required" onblur="validateRequired(this)"/>
+			</div>
+			<span class="error-message hide">*Molim vas unesite vrijednost</span>
+		</div>
+		<div class="submit">
+			<input type="button" name="submit" id="submit" class= "button-disabled" value="Prijava" onclick="window.location.href = 'pages/admin.html'" />
+		</div>
+	</form>
+
+</div>
