@@ -1,135 +1,55 @@
 <?php
 
-require("newsItemClass.php");
+require("dataAccess.php");
 
-function getNewsFromFiles() {
-$news = array();
-
-$directory = "../news/";
-$dir = opendir($directory);
-$id = 0;
-while (($file = readdir($dir)) !== false) {
-  $filename = $directory . $file;
-  $type = filetype($filename);
-  if ($type == 'file') {
-     $contents = file($filename);
-	 $index = 0;
-	 $current = new NewsItem();
-     foreach ($contents as $line_num => $line) {
-	   $current->setId($id);
-	   
-	   if ($index == 0) {
-			$current->setDateCreated($line);
-	   }
-	   if ($index == 1) {
-			$current->setAuthor($line);
-	   }
-	   if ($index == 2) {
-			$current->setTitle($line);
-	   }
-	   if ($index == 3) {
-			$current->setImage($line);
-	   }
-	   
-	   if (trim($line) == "--") {
-			$current->setHasDetails(true);
-			$current->setDetailedContent($current->getContent());
-		}
-		
-	   if ($index > 3 && trim($line) != "--") {
-			if (!$current->getHasDetails())	
-				$current->setContent($current->getContent()."".$line);
-			if ($current->getHasDetails())
-				$current->setDetailedContent($current->getDetailedContent()."".$line);
-		}
-	   $index++;
-     }
-		   
-	array_push($news, $current);
-	$id++;
-
-  }
+function zag() {
+    header("{$_SERVER['SERVER_PROTOCOL']} 200 OK");
+    header('Content-Type: text/html');
+    header('Access-Control-Allow-Origin: *');
 }
-closedir($dir);
-
-return $news;
-}
-
-
-
-function generateNewsHtml($news) {
-	
-	$result = "";
-	
-	foreach($news as $newsItem) {
-	$result.= "<div class=\"news\">";
-	$result.= "<div class=\"title\">";
-	$result.= $newsItem->getTitle();
-	$result.= "</div>";
-	$result.= "<div class=\"author\">";
-	$result.= $newsItem->getAuthor();
-	$result.= "</div>";
-	$result.= "<div class=\"date\">";
-	$result.= $newsItem->getDateCreated();
-	$result.= "</div>";
-	$result.= "<div class=\"content\">";
-	$result.= "<img src=\"".$newsItem->getImage()."\" alt=\"image\" class=\"news-image\">";
-	$result.= $newsItem->getContent();
-	
-	
-	$result.= "<a href=\"#\" onclick=\"openNews(".$newsItem->getId().")\"> Detaljnije </a>";
-	$result.= "</br></br>";
-	$result.= "<a href=\"#\" onclick=\"openNews(".$newsItem->getId().")\"> Komentari(".count($newsItem->getComments()).") </a>";
-	$result.= "</div>";
-	$result.= "</div>";
-	
+function rest_get($request, $data) {
+	if (isset($data['id']))
+		echo json_encode(getNewsItem($data['id']));
+	else {
+	    $toReturn = getNewsItems();
+		echo json_encode($toReturn);
 	}
-	
-	return $result;
+}
+function rest_post($request, $data) { }
+function rest_delete($request) { }
+function rest_put($request, $data) { }
+function rest_error($request) { }
+
+$method  = $_SERVER['REQUEST_METHOD'];
+$request = $_SERVER['REQUEST_URI'];
+
+switch($method) {
+    case 'PUT':
+        parse_str(file_get_contents('php://input'), $put_vars);
+        zag(); $data = $put_vars; rest_put($request, $data); break;
+    case 'POST':
+		parse_str(file_get_contents('php://input'), $post_vars);
+        zag(); $data = $post_vars; rest_post($request, $data); break;
+    case 'GET':
+        zag(); $data = $_GET; rest_get($request, $data); break;
+    case 'DELETE':
+        zag(); rest_delete($request); break;
+    default:
+        header("{$_SERVER['SERVER_PROTOCOL']} 404 Not Found");
+        rest_error($request); break;
 }
 
-function generateNewsItemHtml($news, $id) {
-	$item = null;
-	$result = "";
 
-	foreach($news as $newsItem) {
-		if ($newsItem->getId() == $id) {
-			$item = $newsItem;
-			}
-	}
 
-	$result.= "<div class=\"news\">";
-	$result.= "<div class=\"title\">";
-	$result.= $item->getTitle();
-	$result.= "</div>";
-	$result.= "<div class=\"author\">";
-	$result.= $item->getAuthor();
-	$result.= "</div>";
-	$result.= "<div class=\"date\">";
-	$result.= $item->getDateCreated();
-	$result.= "</div>";
-	$result.= "<div class=\"content\">";
-	$result.= "<img src=\"".$newsItem->getImage()."\" alt=\"image\" class=\"news-image\">";
-	$result.= $item->getDetailedContent();
-	$result.= "</div>";
-	$result.= "</div>";
-	
-	foreach($item->getComments() as $comment) {
-		$result.= "<div class=\"comment\">";
-		$result.= "<span class=\"text\">";
-		$result.= $comment->getContent();
-		$result.= "</span>";
-		$result.= "<span class=\"info\">";
-		$result.= "Autor: <a href=\"mailto:".$comment->getEmail()."\">";
-		$result.= $comment->getAuthor();
-		$result.= "</a> | ";
-		$result.= $comment->getDateCreated();
-		$result.= "</span>";
-		$result.= "</div>";
-	}
-
-	return $result;
-
+function getNewsItem($id) {
+	 
+	return fetchNewsItemWithComments($id);
 }
+
+function getNewsItems() {
+	$toReturn = fetchNewsWithComments();
+	return $toReturn;
+}
+
 
 

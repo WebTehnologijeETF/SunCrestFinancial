@@ -1,50 +1,27 @@
 <?php
 
-/* Mail Service */
-require '../PHPMailer/PHPMailerAutoload.php';
-
+require("dataAccess.php");
 
 function zag() {
     header("{$_SERVER['SERVER_PROTOCOL']} 200 OK");
     header('Content-Type: text/html');
     header('Access-Control-Allow-Origin: *');
 }
-function rest_get($request, $data) {
-	echo $data;
+function rest_get($request, $data) {	
 }
 function rest_post($request, $data) {
-	/* Create Mailing Service */
 	$contract = json_decode(key($data), true);
 	var_dump($contract);
 	
-	$email = $contract["email"];
-	$name = $contract["fname"];
-	$comment = $contract["comment"];
+	$id = $_GET["id"];
+	$comment = new CommentItem();
 	
-	$mail = new PHPMailer();    
-	$mail->isSMTP();
-	$mail->Host = 'smtp.gmail.com';
-	$mail->SMTPAuth = true;
-	$mail->Username = 'suncrestfwt@gmail.com';
-	$mail->Password = 'WTSC1234';
-	$mail->SMTPSecure = 'tls';
-	$mail->Port = 465;
-	$mail->From = 'suncrestfwt@gmail.com';
-	$mail->FromName = 'SunCrestFinancials';
-	$mail->addAddress('ahmethodzic@live.com', 'Adnan');    
-	$mail->addReplyTo($email, $name);    
-	$mail->WordWrap = 50;
-	$mail->isHTML(false);    
-	$mail->Subject = 'Kontakt poruka';
-	$mail->Body  = $comment;
+	$comment->setAuthor($contract["author"]);
+	$comment->setEmail($contract["email"]);
+	$comment->setContent($contract["content"]);
 	
-	if(!$mail->send()) {
-	   echo "<br/> <br/> Zahvaljujemo se što ste nas kontaktirali <br/> <br/>";
-	}
-	else{
-	echo "<br/> <br/> Greška u slanju maila. <br/> <br/>";
-	exit;
-	}
+	saveComment($comment, $id);
+	
 }
 function rest_delete($request) { }
 function rest_put($request, $data) { }
@@ -68,3 +45,18 @@ switch($method) {
         header("{$_SERVER['SERVER_PROTOCOL']} 404 Not Found");
         rest_error($request); break;
 }
+
+
+
+function getNewsItem($id) {
+	 
+	return fetchNewsItemWithComments($id);
+}
+
+function getNewsItems() {
+	$toReturn = fetchNewsWithComments();
+	return $toReturn;
+}
+
+
+

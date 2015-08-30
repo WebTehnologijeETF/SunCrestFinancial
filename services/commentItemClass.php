@@ -3,7 +3,7 @@
 class CommentItem
 {
   // date
-  private $id = "";
+  public $id = "";
   
   public function getId()
   {
@@ -16,7 +16,7 @@ class CommentItem
   }
   
   // date
-  private $dateCreated = "";
+  public $dateCreated = "";
   
   public function getDateCreated()
   {
@@ -29,7 +29,7 @@ class CommentItem
   }
   
   // author
-  private $author = "";
+  public $author = "";
   
   public function getAuthor()
   {
@@ -43,7 +43,7 @@ class CommentItem
   
   
   // email
-  private $email = "";
+  public $email = "";
   
   public function getEmail()
   {
@@ -56,7 +56,7 @@ class CommentItem
   }
   
   // content
-  private $content = "";
+  public $content = "";
   
   public function getContent()
   {

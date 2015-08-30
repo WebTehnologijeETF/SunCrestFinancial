@@ -10,7 +10,7 @@ class NewsItem
 	$this->comments = array();
   }
   // date
-  private $id = "";
+  public $id = "";
   
   public function getId()
   {
@@ -23,7 +23,7 @@ class NewsItem
   }
   
   // date
-  private $dateCreated = "";
+  public $dateCreated = "";
   
   public function getDateCreated()
   {
@@ -36,7 +36,7 @@ class NewsItem
   }
   
   // image
-  private $image = "";
+  public $image = "";
   
   public function getImage()
   {
@@ -48,7 +48,7 @@ class NewsItem
       $this->image = $newval;
   }
   // author
-  private $author = "";
+  public $author = "";
   
   public function getAuthor()
   {
@@ -62,7 +62,7 @@ class NewsItem
   
   
   // title
-  private $title = "";
+  public $title = "";
   
   public function getTitle()
   {
@@ -75,7 +75,7 @@ class NewsItem
   }
   
   // content
-  private $content = "";
+  public $content = "";
   
   public function getContent()
   {
@@ -88,7 +88,7 @@ class NewsItem
   }
   
   // detailedContent
-  private $detailedContent = "";
+  public $detailedContent = "";
   
   public function getDetailedContent()
   {
@@ -101,7 +101,7 @@ class NewsItem
   }
   
   // detailedContent
-  private $hasDetails = "";
+  public $hasDetails = "";
   
   public function getHasDetails()
   {
@@ -114,7 +114,7 @@ class NewsItem
   }
   
   // comment
-  private $comments;
+  public $comments;
   
   public function getComments()
   {

@@ -528,5 +528,51 @@ table tr:hover td {
     background: -o-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
 }
 
+.comments {
+	padding-top: 10px;
+}
+
+.comment-title {
+	margin-bottom: 0;
+}
+
+.comments span {
+	color: #FC5A1F;
+}
+.comments p {
+	margin: 0;
+}
+
+.more {
+	color: #FC5A1F;
+	cursor: pointer;
+}
+
+.comment-section {
+	margin-top: 25px;
+}
+
+.add-comment {
+	padding: 6px;
+    width: 100px;
+    border: 0;
+    background-color: #FC591F;
+    color: white;
+}
+
+.comment-write {
+	width: 500px;
+	height: 150px;
+}
+
+.comment-text {
+	width: 250px;
+    padding: 7px;
+    font-size: 13px;
+    border: 1px solid #D4D4D4;
+    margin-bottom: 10px;
+    padding-left: 12px;
+}
+
 
 
